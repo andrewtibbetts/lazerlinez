@@ -2,8 +2,8 @@
 
 Lazer Linez - add some rad
 
-Version 	: 0.1
-Repository 	: https://github.com/andrewtibbetts/LazerLinez
+Version 	: 0.2
+Repository 	: https://github.com/varystrategic/LazerLinez
 Author 		: Andrew Tibbetts
 License 	: MIT, GPL
 
