@@ -17,12 +17,8 @@
 		"url": "git://github.com/varystrategic/lazerlinez.git"
 	},
 	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests",
-		"docs"
+		"docs",
+		"CNAME"
 	],
 	"private": true,
 	"dependencies": {
