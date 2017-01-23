@@ -1,0 +1,113 @@
+
+@import 'reset';
+@import url(https://fonts.googleapis.com/css?family=Racing+Sans+One);
+
+
+body {font: 13px Helmet, Freesans, sans-serif;}
+
+body, select, input, textarea {color: #333;}
+
+a {color: #03f;}
+a:hover {color: #69f;}
+
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;}
+
+a:link {-webkit-tap-highlight-color: #fcd700;}
+
+ins {background-color: #fcd700; color: #000; text-decoration: none;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+input:-moz-placeholder { color:#a9a9a9; }
+textarea:-moz-placeholder { color:#a9a9a9; }
+
+blockquote {padding: 16px; background: #eee;}
+
+
+
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	font-family: sans-serif;
+	background: linear-gradient( to top, desaturate( midnightblue, 15% ) 30%, desaturate( darken( midnightblue, 20% ), 20% ) 80% );
+	
+	&:after {
+		content: '';
+		position: fixed;
+		z-index: 5;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('../img/noise.png');
+		background-size: 150%;
+		opacity: .25;
+		pointer-events: none;
+	}
+}
+
+.lazer {
+	top: 20% !important;
+	left: 50% !important;
+	transform: translate(-50%,-50%);
+	width: 90vmin !important;
+	height: 90vmin !important;
+	border-radius: 9999px;
+}
+
+svg {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+.mountainz {
+	z-index: 2;
+}
+.lazerlinez-text {
+	z-index: 4;
+
+	text {
+		font-family: 'Racing Sans One', sans-serif;
+		font-size: calc( 5vw + 5vh );
+		letter-spacing: .025em;
+		text-transform: uppercase;
+		text-shadow: -.1vh -.1vw 0 white, .02em .02em 0 rgba(0,0,0,.5), -1em .125em 2.5em rgba(255,255,255,.5), 1em .125em 2.5em rgba(255,255,255,.5), 0 .25em 1em rgba(155,255,255,.25);
+		fill: url(#gradient);
+	}
+
+	.stop1 { stop-color: desaturate( lighten( midnightblue, 25% ), 25% ); }
+	.stop2 { stop-color: deepskyblue; }
+	.stop3 { stop-color: white; }
+	.stop4 { stop-color: black; }
+	.stop5 { stop-color: hotpink; }
+	.stop6 { stop-color: white; }
+}
+
+.grid {
+	position: absolute;
+	z-index: 3;
+	bottom: 0;
+	left: -100vw;
+	width: 300vw;
+	height: 100vh;
+	transform-origin: bottom;
+	transform: perspective(800px) rotateX(66deg);
+	mask: url(#mask);
+}
+.grid-line {
+	position: absolute;
+	stroke: mix(cyan,black,30%);
+	stroke-width: 1.5vmin;
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+}
+

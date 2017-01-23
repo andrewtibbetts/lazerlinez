@@ -14,12 +14,13 @@ License 	: MIT, GPL
 var lazerlinez_defaultz = {
 	'start_color' : 'goldenrod', // beginning color of the linez
 	'end_color' : '#b2d', // ending color of the linez
-	'first_gap' : .1, // thickness % of first space
-	'first_line' : 6, // thickness % of first line
-	'last_gap' : 6, // thickness % of last space
+	'first_gap' : .2, // thickness % of first space
+	'first_line' : 4, // thickness % of first line
+	'last_gap' : 4, // thickness % of last space
 	'last_line' : .1, // thickness % of last line
-	'num_linez' : 16, // number of linez
-	'position' : 'top', // from which edge
+	'num_linez' : 10, // number of linez
+	'position' : 'top', // from which edge - top, right, bottom, left
+	'extend_start' : 55, // thickness % of additional start_color
 	'z' : '1' // z-index
 };
 
@@ -78,11 +79,12 @@ $.fn.lazerlinez = function( optionz ) {
 					edge.full = 'height';
 					break;
 			}
-			
+
+			if ( o.extend_start ) {
+				o.num_linez++;
+			}
+
 			for ( var i = 0; i < o.num_linez; i++ ) {
-				
-				var width_gap = parseFloat( o.first_gap + ( i * ( ( o.last_gap - o.first_gap ) / ( o.num_linez - 1 ) ) ) );
-				var width_line = parseFloat( o.first_line - ( i * ( ( o.first_line - o.last_line ) / ( o.num_linez - 1 ) ) ) );
 				
 				colorz.diff = {};
 				colorz.diff.red = parseInt( Math.abs( colorz.start_red - colorz.end_red ) / o.num_linez * i );
@@ -92,18 +94,41 @@ $.fn.lazerlinez = function( optionz ) {
 				colorz.red = ( colorz.getting.redder ) ? parseInt( colorz.start_red ) + parseInt( colorz.diff.red ) : parseInt( colorz.start_red ) - parseInt( colorz.diff.red );
 				colorz.green = ( colorz.getting.greener ) ? parseInt( colorz.start_green ) + parseInt( colorz.diff.green ) : parseInt( colorz.start_green ) - parseInt( colorz.diff.green );
 				colorz.blue = ( colorz.getting.bluer ) ? parseInt( colorz.start_blue ) + parseInt( colorz.diff.blue ) : parseInt( colorz.start_blue ) - parseInt( colorz.diff.blue );
+				
+				if ( o.extend_start && !i ) {
 
-				var linez_stylez = {};
-				linez_stylez['position'] = 'absolute';
-				linez_stylez['background-color'] = 'rgb('+colorz.red+','+colorz.green+','+colorz.blue+')';
-				linez_stylez[o.position] = parseFloat( start_at + width_gap ) + '%';
-				linez_stylez[edge.other] = 0;
-				linez_stylez[edge.grow] = width_line+'%';
-				linez_stylez[edge.full] = '100%';
+					var width_gap = 0;
+					var width_line = o.extend_start;
+
+					var linez_stylez = {};
+					linez_stylez['position'] = 'absolute';
+					linez_stylez['background-color'] = 'rgb('+colorz.red+','+colorz.green+','+colorz.blue+')';
+					linez_stylez[o.position] = '0%';
+					linez_stylez[edge.other] = 0;
+					linez_stylez[edge.grow] = width_line+'%';
+					linez_stylez[edge.full] = '100%';
+
+					$linez[i] = $('<div class="linez"/>').css(linez_stylez);
+
+					start_at = start_at + width_gap + width_line;
+				}
+				else {
 				
-				$linez[i] = $('<div class="linez"/>').css(linez_stylez);
-				
-				start_at = start_at + width_gap + width_line;
+					var width_gap = parseFloat( o.first_gap + ( i * ( ( o.last_gap - o.first_gap ) / ( o.num_linez - 1 ) ) ) );
+					var width_line = parseFloat( o.first_line - ( i * ( ( o.first_line - o.last_line ) / ( o.num_linez - 1 ) ) ) );
+
+					var linez_stylez = {};
+					linez_stylez['position'] = 'absolute';
+					linez_stylez['background-color'] = 'rgb('+colorz.red+','+colorz.green+','+colorz.blue+')';
+					linez_stylez[o.position] = parseFloat( start_at + width_gap ) + '%';
+					linez_stylez[edge.other] = 0;
+					linez_stylez[edge.grow] = width_line+'%';
+					linez_stylez[edge.full] = '100%';
+
+					$linez[i] = $('<div class="linez"/>').css(linez_stylez);
+
+					start_at = start_at + width_gap + width_line;
+				}
 			}
 			
 			var lazer_stylez = {};
@@ -112,8 +137,7 @@ $.fn.lazerlinez = function( optionz ) {
 			lazer_stylez[o.position] = 0;
 			lazer_stylez[edge.other] = 0;
 			lazer_stylez[edge.full] = '100%';
-			lazer_stylez[edge.grow] = start_at;
-			lazer_stylez['max-'+edge.grow] = $this.css(edge.grow);
+			lazer_stylez[edge.grow] = '100%';
 			lazer_stylez['overflow'] = 'hidden';
 			
 			$lazer.html($linez).css(lazer_stylez);
