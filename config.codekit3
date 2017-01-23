@@ -2382,6 +2382,12 @@
 		"oAP": "\/docs\/bower_components\/jquery\/test\/xhtml.php",
 		"oF": 0
 		},
+	"\/docs\/CNAME": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/docs\/CNAME",
+		"oF": 0
+		},
 	"\/docs\/index.html": {
 		"ft": 8192,
 		"oA": 2,
