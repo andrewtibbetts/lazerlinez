@@ -49,13 +49,26 @@ body {
 	}
 }
 
+.fade_in_on_load {
+	opacity: 0;
+	transition: all 2s ease-in-out;
+	
+	&.show {
+		opacity: 1;
+	}
+}
+
 .lazer {
-	top: 20% !important;
+	top: 18% !important;
 	left: 50% !important;
 	transform: translate(-50%,-50%);
 	width: 90vmin !important;
 	height: 90vmin !important;
 	border-radius: 9999px;
+	
+	&.show {
+		top: 20% !important;
+	}
 }
 
 svg {
@@ -76,7 +89,7 @@ svg {
 		font-size: calc( 5vw + 5vh );
 		letter-spacing: .025em;
 		text-transform: uppercase;
-		text-shadow: -.1vh -.1vw 0 white, .02em .02em 0 rgba(0,0,0,.5), -1em .125em 2.5em rgba(255,255,255,.5), 1em .125em 2.5em rgba(255,255,255,.5), 0 .25em 1em rgba(155,255,255,.25);
+		text-shadow: -.1vh -.1vw 0 white, .02em .02em 0 rgba(0,0,0,.5), -1em .125em 2.5em rgba(255,255,255,.5), 0.5em .125em 2.5em rgba(255,255,255,.5), 0 .25em 1em rgba(155,255,255,.25);
 		fill: url(#gradient);
 	}
 

@@ -21,7 +21,8 @@ var lazerlinez_defaultz = {
 	'num_linez' : 10, // number of linez
 	'position' : 'top', // from which edge - top, right, bottom, left
 	'extend_start' : 55, // thickness % of additional start_color
-	'z' : '1' // z-index
+	'z' : '1',
+	'add_classes' : '' // additional classes
 };
 
 $.fn.lazerlinez = function( optionz ) {
@@ -33,7 +34,7 @@ $.fn.lazerlinez = function( optionz ) {
 			var o = $.extend({}, lazerlinez_defaultz, optionz);
 
 			var $this = $(this);
-			var $lazer = $('<div class="lazer"/>');
+			var $lazer = $('<div class="lazer '+o.add_classes+'"/>');
 			var $linez = [];
 			var edge = {};
 			var start_at = 0;

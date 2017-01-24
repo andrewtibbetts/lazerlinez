@@ -1,7 +1,49 @@
 // @codekit-prepend '../../bower_components/jquery/dist/jquery.slim.js', '../../../jquery.lazerlinez.js';
 
 
-(function( $ ){
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+}
+
+
+function makeSVG( tag, attrs ) {
+
+	var el = document.createElementNS( 'http://www.w3.org/2000/svg', tag );
+
+	for ( var k in attrs ) {
+
+		el.setAttribute( k, attrs[k] );
+	}
+
+	return el;
+}
+
+
+
+(function($){
+
+
+function domino_fade_in( $fade_el ){
+
+	$fade_el.eq(0).addClass('show');
+	$fade_el = $fade_el.slice(1);
+
+	if ($fade_el.length) {
+
+		setTimeout( function(){ domino_fade_in($fade_el); }, 200 );
+	}
+}
 
 
 $(document).ready(function(){
@@ -9,23 +51,7 @@ $(document).ready(function(){
 	var bodyW = $('body').width();
 	var bodyH = $('body').height();
 
-	$('body').lazerlinez();
-
-
-
-	/* the rest is just additional, glammy 80s eye candy */
-
-	function makeSVG( tag, attrs ) {
-
-		var el = document.createElementNS( 'http://www.w3.org/2000/svg', tag );
-
-		for ( var k in attrs ) {
-
-			el.setAttribute( k, attrs[k] );
-		}
-
-		return el;
-	}
+	$('body').lazerlinez({ 'add_classes': 'fade_in_on_load' });
 	
 	$('.grid').attr('viewBox','0 0 '+bodyW*3+' '+bodyH);
 	$('.grid ellipse').attr({ 'cx': bodyW*1.5, 'cy': bodyH/1.5, 'rx': bodyW/2, 'ry': bodyH/3 });
@@ -66,6 +92,11 @@ $(document).ready(function(){
 });
 
 
+$(window).on('load',function(){
+	
+	domino_fade_in($('.fade_in_on_load'));
+	
+});
 	
 
-})( jQuery );
+})(jQuery);
