@@ -1,28 +1,33 @@
 {
-	"name": "lazerlinez",
-	"authors": [
-		"Andrew Tibbetts <andrew@varystrategic.com> (http://varystrategic.com)"
-	],
-	"description": "Add Some Rad",
-	"main": "jquery.lazerlinez.js",
-	"keywords": [
-		"80s",
-		"eighties",
-		"laser"
-	],
-	"license": "MIT",
-	"homepage": "http://addsomerad.com",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/varystrategic/lazerlinez.git"
-	},
-	"ignore": [
-		"docs",
-		"CNAME"
-	],
-	"private": true,
-	"dependencies": {
-		"jquery": "^3.1.1",
-		"jQuery": "^3.1.1"
-	}
+  "name": "lazerlinez",
+  "authors": [
+    "Andrew Tibbetts <andrew@varystrategic.com> (http://varystrategic.com)"
+  ],
+  "description": "Add Some Rad",
+  "main": "jquery.lazerlinez.js",
+  "keywords": [
+    "80s",
+    "eighties",
+    "laser"
+  ],
+  "license": "MIT",
+  "homepage": "http://addsomerad.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/varystrategic/lazerlinez.git"
+  },
+  "ignore": [
+    "docs",
+    "CNAME",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jQuery": "^3.1.1"
+  }
 }
