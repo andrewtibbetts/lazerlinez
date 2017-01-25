@@ -39,7 +39,20 @@
 
 <body>
 
-<svg class="mountainz fade_in_on_load" viewBox="0 0 0 0" preserveAspectRatio="none"></svg>
+<div class="github">
+	<a href="http://github.com/varystrategic/lazerlinez" title="Fork me on GitHub">
+		<svg viewbox="0 0 100 100">
+			<title>Fork me on GitHub</title>
+			<path d="M0 0v100h100V0H0zm60 70.2h.2c1 2.7.3 4.7 0 5.2 1.4 1.4 2 3 2 5.2 0 7.4-4.4 9-8.7 9.5.7.7 1.3 2 1.3 3.7V99c0 .5 1.4 1 1.4 1H44s1.2-.5 1.2-1v-3.8c-3.5 1.4-5.2-.8-5.2-.8-1.5-2-3-2-3-2-2-.5-.2-1-.2-1 2-.7 3.5.8 3.5.8 2 1.7 4 1 5 .3.2-1.2.7-2 1.2-2.4-4.3-.4-8.8-2-8.8-9.4 0-2 .7-4 2-5.2-.2-.5-1-2.5.2-5 0 0 1.5-.6 5.2 1.8 1.5-.4 3.2-.6 4.8-.6 1.6 0 3.3.2 4.8.7 2.8-2 4.4-2 5-2z"></path>
+		</svg>
+	</a>
+</div>
+
+<div class="noise fade_in_on_load"></div>
+
+<svg class="mountainz" viewBox="0 0 0 0" preserveAspectRatio="none"></svg>
+
+<div class="background fade_in_on_load"></div>
 
 <svg class="grid fade_in_on_load" viewBox="0 0 0 0" preserveAspectRatio="none">
 	<defs>
@@ -66,6 +79,73 @@
 	<text x="50%" y="83%" 
   text-anchor="middle" alignment-baseline="middle">Lazer Linez</text>
 </svg>
+
+<div class="settings">
+
+	<button class="settings-toggle">
+		<span class="slider slider-1"></span>
+		<span class="slider slider-2"></span>
+		<span class="slider slider-3"></span>
+		<span class="slider slider-4"></span>
+	</button>
+	
+	<div class="settings-text">
+		<div class="settings-color settings-color-start">
+			<input type="color" class="setting" name="start_color" value="#daa520" />
+		</div>
+		<div class="settings-position">
+			<button class="setting-position setting-position-top on" name="position" value="top"></button>
+			<button class="setting-position setting-position-right" name="position" value="right"></button>
+			<button class="setting-position setting-position-bottom" name="position" value="bottom"></button>
+			<button class="setting-position setting-position-left" name="position" value="left"></button>
+		</div>
+		<div class="settings-color settings-color-end">
+			<input type="color" class="setting" name="end_color" value="#bb22dd" />
+		</div>
+	</div>
+	
+	<div class="settings-numbers">
+		<div class="settings-number settings-number-extend_start">
+			<label for="extend_start">Extend Start</label>
+			<input type="number" class="setting" name="extend_start" id="extend_start" min="0.0" value="55" max="100" step=".1" />
+		</div>
+		<div class="settings-number settings-number-first_gap">
+			<label for="first_gap">First Gap</label>
+			<input type="number" class="setting" name="first_gap" id="first_gap" min="0.0" value="0.2" max="100" step=".1" />
+		</div>
+		<div class="settings-number settings-number-first_line">
+			<label for="first_gap">First Line</label>
+			<input type="number" class="setting" name="first_line" id="first_line" min="0.0" value="4" max="100" step=".1" />
+		</div>
+		<div class="settings-number settings-number-last_gap">
+			<label for="first_gap">Last Gap</label>
+			<input type="number" class="setting" name="last_gap" id="last_gap" min="0.0" value="4" max="100" step=".1" />
+		</div>
+		<div class="settings-number settings-number-last_line">
+			<label for="first_gap">Last Line</label>
+			<input type="number" class="setting" name="last_line" id="last_line" min="0.0" value="0.1" max="100" step=".1" />
+		</div>
+		<div class="settings-number settings-number-num_linez">
+			<label for="num_linez"># of Linez</label>
+			<input type="number" class="setting" name="num_linez" id="num_linez" min="0" value="10" max="100" step="1" />
+		</div>
+	</div>
+		
+<!--
+	'start_color' : 'goldenrod', // beginning color of the linez
+	'end_color' : '#b2d', // ending color of the linez
+	'first_gap' : .2, // thickness % of first space
+	'first_line' : 4, // thickness % of first line
+	'last_gap' : 4, // thickness % of last space
+	'last_line' : .1, // thickness % of last line
+	'num_linez' : 10, // number of linez
+	'position' : 'top', // from which edge - top, right, bottom, left
+	'extend_start' : 55, // thickness % of additional start_color
+	'z' : '1',
+	'add_classes' : '' // additional classes
+-->
+	
+</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write("<script src='assets/js/libs/jquery-1.11.3.min.js'>\x3C/script>")</script>

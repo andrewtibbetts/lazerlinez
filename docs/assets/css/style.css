@@ -241,36 +241,73 @@ blockquote {
   padding: 16px;
   background: #eee; }
 
+* {
+  outline: 0; }
+
 html,
 body {
-  height: 100%;
+  height: 100vh;
   overflow: hidden; }
 
 body {
   font-family: sans-serif;
-  background: -webkit-linear-gradient(bottom, #232366 30%, #0a0a19 80%);
-  background: linear-gradient(to top, #232366 30%, #0a0a19 80%); }
-  body:after {
-    content: '';
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../img/noise.png");
-    background-size: 150%;
-    opacity: .25;
-    pointer-events: none; }
+  background-color: black; }
+  body.settings-open .lazer.show {
+    top: 7vh !important;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    width: 50vmin !important;
+    height: 50vmin !important;
+    border-radius: .25rem;
+    border: 1px solid white; }
+  body.settings-open .lazerlinez-text,
+  body.settings-open .grid {
+    opacity: 0; }
+  body.settings-open .settings-toggle {
+    top: calc( -1vmin - 4vmax); }
+  body.settings-open .settings {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%); }
+  body.settings-open .slider:after {
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  body.settings-open .slider-1,
+  body.settings-open .slider-3 {
+    top: 50%;
+    -webkit-transform: translate(0, -50%) rotate(45deg);
+            transform: translate(0, -50%) rotate(45deg); }
+  body.settings-open .slider-2,
+  body.settings-open .slider-4 {
+    top: 50%;
+    -webkit-transform: translate(0, -50%) rotate(-45deg);
+            transform: translate(0, -50%) rotate(-45deg); }
 
 .fade_in_on_load {
   opacity: 0;
-  -webkit-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out; }
+  -webkit-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out; }
   .fade_in_on_load.show {
     opacity: 1; }
 
+.background {
+  z-index: 0;
+  background: -webkit-linear-gradient(bottom, #232366 30%, #0a0a19 80%);
+  background: linear-gradient(to top, #232366 30%, #0a0a19 80%); }
+
+.background,
+.lazer,
+.mountainz,
+.lazerlinez-text,
+.grid {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; }
+
 .lazer {
+  position: fixed !important;
   top: 18% !important;
   left: 50% !important;
   -webkit-transform: translate(-50%, -50%);
@@ -281,18 +318,11 @@ body {
   .lazer.show {
     top: 20% !important; }
 
-svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; }
-
 .mountainz {
-  z-index: 2; }
+  z-index: 3; }
 
 .lazerlinez-text {
-  z-index: 4; }
+  z-index: 5; }
   .lazerlinez-text text {
     font-family: 'Racing Sans One', sans-serif;
     font-size: calc( 5vw + 5vh);
@@ -314,8 +344,8 @@ svg {
     stop-color: white; }
 
 .grid {
-  position: absolute;
-  z-index: 3;
+  position: fixed;
+  z-index: 4;
   bottom: 0;
   left: -100vw;
   width: 300vw;
@@ -331,3 +361,218 @@ svg {
   position: absolute;
   stroke: #004d4d;
   stroke-width: 1.5vmin; }
+
+.github {
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  right: 0;
+  width: 10vmax;
+  height: 10vmax;
+  overflow: hidden; }
+  .github a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    -webkit-transform: translate(50%, -50%) rotate(45deg);
+            transform: translate(50%, -50%) rotate(45deg);
+    color: deepskyblue; }
+  .github svg {
+    fill: currentColor; }
+
+.settings-toggle {
+  position: fixed;
+  top: calc( -3vmin - 4vmax);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 4vmax;
+  height: 3vmax;
+  background-color: transparent;
+  border: 0; }
+  .settings-toggle .slider {
+    position: absolute;
+    left: 0;
+    width: 4vmax;
+    height: 0.25vmax;
+    background-color: goldenrod;
+    border-radius: 999px;
+    -webkit-transition: all 600ms ease;
+    transition: all 600ms ease; }
+    .settings-toggle .slider:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+      width: 0.8vmax;
+      height: 0.8vmax;
+      background: goldenrod;
+      border-radius: 999px;
+      -webkit-transition: all 600ms ease;
+      transition: all 600ms ease; }
+  .settings-toggle .slider-1 {
+    top: 0; }
+    .settings-toggle .slider-1:after {
+      left: 30%; }
+  .settings-toggle .slider-2 {
+    top: 33.333333%;
+    -webkit-transform: translateY(-33%);
+            transform: translateY(-33%); }
+    .settings-toggle .slider-2:after {
+      left: 15%; }
+  .settings-toggle .slider-3 {
+    top: 66.666666%;
+    -webkit-transform: translateY(-66%);
+            transform: translateY(-66%); }
+    .settings-toggle .slider-3:after {
+      left: 66%; }
+  .settings-toggle .slider-4 {
+    top: 100%;
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%); }
+    .settings-toggle .slider-4:after {
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+
+.settings {
+  position: fixed;
+  z-index: 6;
+  bottom: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  width: 100%;
+  height: 30%;
+  padding: 0 2vw;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease; }
+
+.settings-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.settings-color {
+  display: inline-block;
+  padding: 2vw; }
+  .settings-color input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0; }
+    .settings-color input, .settings-color input::-webkit-color-swatch-wrapper, .settings-color input::-webkit-color-swatch {
+      width: 4vmax;
+      height: 4vmax;
+      padding: 0;
+      border: 0;
+      border-radius: 999px; }
+
+.settings-position {
+  position: relative;
+  width: 4vmax;
+  height: 4vmax;
+  margin: 2vw;
+  border-radius: 999px;
+  overflow: hidden; }
+
+.setting-position {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0; }
+
+.setting-position-top,
+.setting-position-bottom {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-left: 1.6vmax solid transparent;
+  border-right: 1.6vmax solid transparent; }
+
+.setting-position-top {
+  top: 0;
+  border-top: 1.6vmax solid rgba(255, 255, 255, 0.15); }
+  .setting-position-top.on {
+    border-top-color: rgba(255, 255, 255, 0.85); }
+
+.setting-position-bottom {
+  bottom: 0;
+  border-bottom: 1.6vmax solid rgba(255, 255, 255, 0.15); }
+  .setting-position-bottom.on {
+    border-bottom-color: rgba(255, 255, 255, 0.85); }
+
+.setting-position-right,
+.setting-position-left {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-top: 1.6vmax solid transparent;
+  border-bottom: 1.6vmax solid transparent; }
+
+.setting-position-right {
+  right: 0;
+  border-right: 1.6vmax solid rgba(255, 255, 255, 0.15); }
+  .setting-position-right.on {
+    border-right-color: rgba(255, 255, 255, 0.85); }
+
+.setting-position-left {
+  left: 0;
+  border-left: 1.6vmax solid rgba(255, 255, 255, 0.15); }
+  .setting-position-left.on {
+    border-left-color: rgba(255, 255, 255, 0.85); }
+
+.settings-numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 5vw; }
+
+.settings-number {
+  width: 7em;
+  text-align: center; }
+  .settings-number label {
+    display: block;
+    padding: .25em; }
+  .settings-number input {
+    width: 2.5em;
+    height: 2em;
+    padding: 0;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    background-color: #222;
+    border: 0; }
+  .settings-number input::-webkit-outer-spin-button,
+  .settings-number input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */ }
+
+.noise {
+  content: '';
+  position: fixed;
+  z-index: 7;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/noise.png");
+  background-size: 150%;
+  pointer-events: none; }
+  .noise.show {
+    opacity: .25; }

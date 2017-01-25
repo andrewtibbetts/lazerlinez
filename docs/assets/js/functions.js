@@ -1,4 +1,4 @@
-// @codekit-prepend '../../bower_components/jquery/dist/jquery.slim.js', '../../../jquery.lazerlinez.js';
+// @codekit-prepend '../../bower_components/jquery/dist/jquery.js', '../../../jquery.lazerlinez.js';
 
 
 function debounce(func, wait, immediate) {
@@ -45,6 +45,41 @@ function domino_fade_in( $fade_el ){
 	}
 }
 
+	
+	
+var lazer_settingz = {
+	'start_color' : 'goldenrod', // beginning color of the linez
+	'end_color' : '#b2d', // ending color of the linez
+	'first_gap' : .2, // thickness % of first space
+	'first_line' : 4, // thickness % of first line
+	'last_gap' : 4, // thickness % of last space
+	'last_line' : .1, // thickness % of last line
+	'num_linez' : 10, // number of linez
+	'position' : 'top', // from which edge - top, right, bottom, left
+	'extend_start' : 55, // thickness % of additional start_color
+	'z' : '1',
+	'add_classes' : '' // additional classes
+};
+
+function reset_lazer() {
+		
+	$('.lazer').remove();
+		
+	$('body').lazerlinez({
+		'start_color' : lazer_settingz.start_color, // beginning color of the linez
+		'end_color' : lazer_settingz.end_color, // ending color of the linez
+		'first_gap' : lazer_settingz.first_gap, // thickness % of first space
+		'first_line' : lazer_settingz.first_line, // thickness % of first line
+		'last_gap' : lazer_settingz.last_gap, // thickness % of last space
+		'last_line' : lazer_settingz.last_line, // thickness % of last line
+		'num_linez' : lazer_settingz.num_linez, // number of linez
+		'position' : lazer_settingz.position, // from which edge - top, right, bottom, left
+		'extend_start' : lazer_settingz.extend_start, // thickness % of additional start_color
+		'z' : lazer_settingz.z,
+		'add_classes' : lazer_settingz.add_classes // additional classes
+	});
+}
+
 
 $(document).ready(function(){
 	
@@ -62,14 +97,15 @@ $(document).ready(function(){
 	var num_peakz = bodyW/50;
 	var mountain_topz = "";
 
-	for ( var m = 0; m < num_peakz; m++ ) {
+	for ( var m = Math.floor(num_peakz/-2); m <= Math.ceil(num_peakz/2); m++ ) {
 
-		var mx = bodyW - ( bodyW / num_peakz * m );
-		var my = horizon_point - ( Math.random()*(bodyH/20) );
+		var py = m * m;
+		var mx = bodyW / num_peakz * ( m + Math.ceil(num_peakz/2) );
+		var my = horizon_point - ( Math.random()*(bodyH/20) ) - py;
 		mountain_topz += mx+','+my+' ';
 	}
 
-	var mountainz = makeSVG( 'polygon', { 'points': '0,'+bodyH+' '+bodyW+','+bodyH+' '+bodyW+','+horizon_point+' '+mountain_topz+'0,'+horizon_point, 'fill': 'black' });
+	var mountainz = makeSVG( 'polygon', { 'points': bodyW+','+bodyH+' 0,'+bodyH+' 0,'+horizon_point+' '+mountain_topz, 'fill': 'black' });
 
 	$(mountainz).prependTo('.mountainz');
 
@@ -89,6 +125,44 @@ $(document).ready(function(){
 
 		$(grid_line).appendTo('.grid');
 	}
+	
+	$('.settings-toggle').on('click',function(){
+		
+		$('body').toggleClass('settings-open');
+	});
+	
+	$('.setting').on( 'change', debounce( function(){
+		
+		var key = $(this).attr('name');
+		
+		if ( $(this).attr('type') == 'number' ) {
+		
+			lazer_settingz[key] = parseInt( $(this).val() );
+		}
+		else {
+		
+			lazer_settingz[key] = $(this).val();
+		}
+		
+		lazer_settingz.add_classes = 'fade_in_on_load show';
+
+		reset_lazer();
+
+	}, 500 ));
+	
+	$('.setting-position').on( 'click', function(){
+		
+		$('.setting-position').removeClass('on');
+		$(this).addClass('on');
+		
+		var key = $(this).attr('name');
+		
+		lazer_settingz[key] = $(this).val();
+
+		reset_lazer();
+
+	});
+
 });
 
 
@@ -97,6 +171,17 @@ $(window).on('load',function(){
 	domino_fade_in($('.fade_in_on_load'));
 	
 });
+
+
+$(window).on('resize',debounce( function(){
+	
+	$('.mountainz,.lazerlinez-text,.grid').addClass('show');
+	
+}, 500 )).on('resize',debounce( function(){
+	
+	$('.mountainz,.lazerlinez-text,.grid').removeClass('show');
+	
+}, 500, true ));
 	
 
 })(jQuery);
