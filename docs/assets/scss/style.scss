@@ -192,7 +192,7 @@ body {
 
 .settings-toggle {
 	position: fixed;
-	top: calc( -3vmin - #{$settings_icon_size} );
+	top: calc( -1rem - #{$settings_icon_size} );
 	left: 50%;
 	transform: translateX(-50%);
 	appearance: none;
@@ -407,5 +407,18 @@ $color_on: rgba(255,255,255,.85);
 	
 	&.show {
 		opacity: .25;
+	}
+}
+
+
+.vary {
+	position: fixed;
+	z-index: 6;
+	bottom: calc( .5vw + 1rem );
+	right: calc( 1vw + 1rem );
+	width: calc( 3vw + 4rem );
+	
+	a {
+		color: #222;
 	}
 }
