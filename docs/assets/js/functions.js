@@ -126,9 +126,18 @@ $(document).ready(function(){
 		$(grid_line).appendTo('.grid');
 	}
 	
-	$('.settings-toggle').on('click',function(){
+	$('.settings-toggle').on('click',function(e){
+		
+		e.preventDefault();
 		
 		$('body').toggleClass('settings-open');
+	});
+	
+	$('.info-toggle').on('click',function(e){
+		
+		e.preventDefault();
+		
+		$('.info').toggleClass('open');
 	});
 	
 	$('.setting').on( 'change', debounce( function(){

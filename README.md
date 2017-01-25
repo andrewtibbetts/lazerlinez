@@ -1,7 +1,7 @@
 # Lazer Linez
 ### Add some rad.
 
-#### Demo: http://codepen.io/varystrategic/pen/ZWbQPq
+#### Demo: http://addsomerad.com
 
 ## Usage
 
