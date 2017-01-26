@@ -137,8 +137,9 @@ body {
 		font-size: calc( 5vw + 5vh );
 		letter-spacing: .025em;
 		text-transform: uppercase;
-		text-shadow: -.1vh -.1vw 0 white, .02em .02em 0 rgba(0,0,0,.5), -1em .125em 2.5em rgba(255,255,255,.5), 0.5em .125em 2.5em rgba(255,255,255,.5), 0 .25em 1em rgba(155,255,255,.25);
+		text-shadow: -.1vh -.1vw 0 white, .2vh .2vw 0 rgba(0,0,0,.875);
 		fill: url(#gradient);
+		filter: url(#dropshadow);
 	}
 
 	.stop1 { stop-color: desaturate( lighten( midnightblue, 25% ), 25% ); }
@@ -395,7 +396,6 @@ $color_on: rgba(255,255,255,.85);
 
 	
 .noise {
-	content: '';
 	position: fixed;
 	z-index: 7;
 	top: 0;
