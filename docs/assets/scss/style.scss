@@ -121,7 +121,7 @@ body {
 	border-radius: 9999px;
 	
 	&.show {
-		bottom: 33%;
+		bottom: 33% !important;
 	}
 }
 
@@ -171,8 +171,8 @@ body {
 	z-index: 6;
 	top: 0;
 	right: 0;
-	width: 10vmax;
-	height: 10vmax;
+	width: 6rem;
+	height: 6rem;
 	overflow: hidden;
 	
 	a {
@@ -209,7 +209,7 @@ body {
 		height: $settings_icon_size/16;
 		background-color: $settings_icon_color;
 		border-radius: 999px;
-		transition: all 600ms ease;
+		transition: all 1200ms ease;
 		
 		&:after {
 			content: '';
@@ -220,7 +220,7 @@ body {
 			height: $settings_icon_size/5;
 			background: $settings_icon_color;
 			border-radius: 999px;
-			transition: all 600ms ease;
+			transition: all 1200ms ease;
 		}
 	}
 	
@@ -269,7 +269,7 @@ body {
 	width: 100%;
 	height: 30%;
 	padding: 0 2vw;
-	transition: all 300ms ease;
+	transition: all 1200ms ease;
 }
 
 .settings-text {
@@ -424,7 +424,7 @@ $color_on: rgba(255,255,255,.85);
 		
 		.info-toggle {
 			color: #bbb;
-			background: #111;
+			background: #18181b;
 	
 			&:after {
 				content: '×';
@@ -442,7 +442,7 @@ $color_on: rgba(255,255,255,.85);
 	z-index: 2;
 	width: calc( 2em + 1vw );
 	height: calc( 2em + 1vw );
-	font-size: 1rem;
+	font-size: calc( 1rem + .25vw );
 	background-color: #000;
 	border: 0;
 	border-radius: 999px;
@@ -464,12 +464,12 @@ $color_on: rgba(255,255,255,.85);
 	z-index: 1;
 	top: .875em;
 	left: .875em;
-	width: 20em;
-	padding: 1em 2em;
-	font-size: 1rem;
+	width: calc( 20em + 4vw );
+	padding: calc( 1.5em + .5vw ) calc( 2em + .5vw );
+	font-size: calc( .75rem + .25vw );
 	line-height: 1.5;
 	color: #bbb;
-	background: #111;
+	background: #18181b;
 	border-radius: .25em;
 	opacity: 0;
 	

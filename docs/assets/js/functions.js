@@ -94,7 +94,7 @@ $(document).ready(function(){
 	$('.mountainz').attr('viewBox','0 0 '+bodyW+' '+bodyH);
 
 	var horizon_point = bodyH/1.5;
-	var num_peakz = bodyW/50;
+	var num_peakz = bodyW/100 + 10;
 	var mountain_topz = "";
 
 	for ( var m = Math.floor(num_peakz/-2); m <= Math.ceil(num_peakz/2); m++ ) {
@@ -167,6 +167,8 @@ $(document).ready(function(){
 		var key = $(this).attr('name');
 		
 		lazer_settingz[key] = $(this).val();
+		
+		lazer_settingz.add_class = 'fade_in_on_load show';
 
 		reset_lazer();
 
