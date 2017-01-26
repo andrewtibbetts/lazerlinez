@@ -36,12 +36,12 @@ function makeSVG( tag, attrs ) {
 
 function domino_fade_in( $fade_el ){
 
-	$fade_el.eq(0).addClass('show');
-	$fade_el = $fade_el.slice(1);
+	$fade_el.eq($fade_el.length-1).addClass('show');
+	$fade_el = $fade_el.slice(0,-1);
 
 	if ($fade_el.length) {
 
-		setTimeout( function(){ domino_fade_in($fade_el); }, 200 );
+		setTimeout( function(){ domino_fade_in($fade_el); }, 500 );
 	}
 }
 
