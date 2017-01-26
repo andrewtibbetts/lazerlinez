@@ -22,6 +22,6 @@ $('.lazer_this_element_up').lazerlinez({
 	'position' : 'top', // from which edge - top, right, bottom, left
 	'extend_start' : 55, // thickness % of additional start_color
 	'z' : '1', // z-index of created .lazer element
-	'add_classes' : '' // additional classes
+	'add_class' : '' // additional classes
 });
 ```

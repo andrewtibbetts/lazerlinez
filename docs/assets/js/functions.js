@@ -1,4 +1,4 @@
-// @codekit-prepend '../../bower_components/jquery/dist/jquery.js', '../../../jquery.lazerlinez.js';
+// @codekit-prepend '../../bower_components/jquery/dist/jquery.js', 'arrive.min.js', '../../../jquery.lazerlinez.js';
 
 
 function debounce(func, wait, immediate) {
@@ -58,7 +58,7 @@ var lazer_settingz = {
 	'position' : 'top', // from which edge - top, right, bottom, left
 	'extend_start' : 55, // thickness % of additional start_color
 	'z' : '1',
-	'add_classes' : '' // additional classes
+	'add_class' : '' // additional classes
 };
 
 function reset_lazer() {
@@ -76,7 +76,7 @@ function reset_lazer() {
 		'position' : lazer_settingz.position, // from which edge - top, right, bottom, left
 		'extend_start' : lazer_settingz.extend_start, // thickness % of additional start_color
 		'z' : lazer_settingz.z,
-		'add_classes' : lazer_settingz.add_classes // additional classes
+		'add_class' : lazer_settingz.add_class // additional classes
 	});
 }
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
 	var bodyW = $('body').width();
 	var bodyH = $('body').height();
 
-	$('body').lazerlinez({ 'add_classes': 'fade_in_on_load' });
+	$('body').lazerlinez({ 'add_class': 'fade_in_on_load' });
 	
 	$('.grid').attr('viewBox','0 0 '+bodyW*3+' '+bodyH);
 	$('.grid ellipse').attr({ 'cx': bodyW*1.5, 'cy': bodyH/1.5, 'rx': bodyW/2, 'ry': bodyH/3 });
@@ -153,7 +153,7 @@ $(document).ready(function(){
 			lazer_settingz[key] = $(this).val();
 		}
 		
-		lazer_settingz.add_classes = 'fade_in_on_load show';
+		lazer_settingz.add_class = 'fade_in_on_load show';
 
 		reset_lazer();
 
@@ -174,10 +174,14 @@ $(document).ready(function(){
 
 });
 
+	
+$(document).arrive('.lazer',function(){
+	
+	domino_fade_in( $('.fade_in_on_load') );
+});
+
 
 $(window).on('load',function(){
-	
-	domino_fade_in($('.fade_in_on_load'));
 	
 });
 
