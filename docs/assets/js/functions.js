@@ -1,4 +1,4 @@
-// @codekit-prepend '../../bower_components/jquery/dist/jquery.js', 'arrive.min.js', '../../../jquery.lazerlinez.js';
+// @codekit-prepend '../../bower_components/jquery/dist/jquery.js', '../../bower_components/Noisy/jquery/jquery.noisy.js', 'arrive.min.js', '../../../jquery.lazerlinez.js';
 
 
 function debounce(func, wait, immediate) {
@@ -172,6 +172,15 @@ $(document).ready(function(){
 
 		reset_lazer();
 
+	});
+	
+	$('.noise').noisy({
+		intensity: 1,
+		size: 200,
+		opacity: 0.1,
+		fallback: '/assets/img/noise.jpg',
+		randomColors: false, // true by default
+		color: '#ffffff'
 	});
 
 });
